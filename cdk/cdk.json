@@ -1,0 +1,7 @@
+{
+    "app": "ts-node index.ts",
+    "output": "build",
+    "context": {
+        "@aws-cdk/core:newStyleStackSynthesis": true
+    }
+}

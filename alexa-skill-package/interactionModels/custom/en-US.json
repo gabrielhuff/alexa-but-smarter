@@ -1,0 +1,30 @@
+{
+    "interactionModel": {
+        "languageModel": {
+            "invocationName": "big brain mode",
+            "intents": [
+                {
+                    "name": "AMAZON.CancelIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.StopIntent",
+                    "samples": []
+                },
+                {
+                    "name": "ChatIntent",
+                    "slots": [
+                        {
+                            "name": "message",
+                            "type": "AMAZON.Person"
+                        }
+                    ],
+                    "samples": [
+                        "{message}"
+                    ]
+                }
+            ],
+            "types": []
+        }
+    }
+}

@@ -1,0 +1,43 @@
+{
+    "manifest": {
+      "publishingInformation": {
+        "locales": {
+          "en-US": {
+            "summary": "Alexa + ChatGPT",
+            "examplePhrases": [
+              "Alexa start big brain mode",
+              "Alexa open big brain mode"
+            ],
+            "name": "Alexa but Smarter",
+            "description": "Alexa learned some stuff from ChatGPT and can now have conversations"
+          },
+          "en-GB": {
+            "summary": "Alexa + ChatGPT",
+            "examplePhrases": [
+              "Alexa start big brain mode",
+              "Alexa open big brain mode"
+            ],
+            "name": "Alexa but Smarter",
+            "description": "Alexa learned some stuff from ChatGPT and can now have conversations"
+          },
+          "pt-BR": {
+            "summary": "Alexa + ChatGPT",
+            "examplePhrases": [
+              "Alexa comece modo inteligente",
+              "Alexa abra modo inteligente"
+            ],
+            "name": "Alexa porém esperta",
+            "description": "A Alexa aprendeu uns truques com o ChatGPT e agora é capaz de conversar"
+          }
+        },
+        "isAvailableWorldwide": true,
+        "testingInstructions": "TODO",
+        "category": "EDUCATION_AND_REFERENCE",
+        "distributionCountries": []
+      },
+      "apis": {
+        "custom": {}
+      },
+      "manifestVersion": "1.0"
+    }
+  }
