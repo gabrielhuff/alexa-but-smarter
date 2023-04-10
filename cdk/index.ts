@@ -2,7 +2,7 @@ import { CfnSkill } from "@aws-cdk/alexa-ask";
 import { Role, ServicePrincipal } from "@aws-cdk/aws-iam";
 import { Code, Function, Runtime } from "@aws-cdk/aws-lambda";
 import { Asset } from "@aws-cdk/aws-s3-assets";
-import { App, CfnOutput, CfnParameter, Duration, Stack } from "@aws-cdk/core";
+import { App, CfnParameter, Duration, Stack } from "@aws-cdk/core";
 
 const ALEXA_SERVICE_PRINCIPAL = new ServicePrincipal("alexa-appkit.amazon.com");
 
@@ -10,7 +10,7 @@ export class AlexaButSmarterStack extends Stack {
     constructor(app: App, id: string) {
         super(app, id);
 
-        // Stack inputs (passed as args when deploying with the CDK CLI)
+        // Infra stack inputs (passed as args when deploying with the CDK CLI)
         // + OpenAI API key used for sending requests to OpenAI from the Lambda function
         // + Login With Amazon (LWA) credentials used for registering a skill on the Alexa console
         const openAiApiKey = new CfnParameter(this, "OpenAiApiKey", { noEcho: true });
@@ -21,6 +21,7 @@ export class AlexaButSmarterStack extends Stack {
 
         // Lambda function containing the skill business logic
         // + Allow alexa service to access it
+        // + Pass OpenAI API key as an environment variable
         const skillLambda = new Function(this, "SkillLambdaFunction", {
             code: Code.fromAsset("../lambda"),
             handler: "index.handler",
@@ -28,8 +29,8 @@ export class AlexaButSmarterStack extends Stack {
             logRetention: 30,
             timeout: Duration.seconds(10),
         });
-        skillLambda.addEnvironment("OPENAI_API_KEY", openAiApiKey.valueAsString);
         skillLambda.grantInvoke(ALEXA_SERVICE_PRINCIPAL);
+        skillLambda.addEnvironment("OPENAI_API_KEY", openAiApiKey.valueAsString);
 
         // Skill package (i.e. skill config). Will be zipped and uploaded to the CDK assets bucket
         // + Role capable of accessing it (assumable by the Allow alexa service)
@@ -63,10 +64,6 @@ export class AlexaButSmarterStack extends Stack {
             },
             vendorId: lwaVendorId.valueAsString
         });
-
-        // Stack outputs (returned after deploying with the CDK CLI):
-        // + Alexa skill ID
-        new CfnOutput(this, "SkillId", { value: skill.ref });
     }
 }
 
