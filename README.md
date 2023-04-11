@@ -1,10 +1,12 @@
 # Alexa but smarter
 
-Simple Alexa Skill that proxies conversations between users and a language model (currently OpenAI's GPT-3). Here's a demo:
-
-https://user-images.githubusercontent.com/19377340/230980395-0cc28dda-10bf-45f8-b4a7-0f5b0c1e1242.mp4
+Simple Alexa skill that proxies conversations between users and a language model (currently OpenAI's GPT-3).
 
 Note that this skill is currently not published, so it can only be used by me.
+
+Here's a demo:
+
+![230980395-0cc28dda-10bf-45f8-b4a7-0f5b0c1e1242](https://user-images.githubusercontent.com/19377340/231246616-67623211-b897-4e2e-b6c0-0e004de354da.gif)
 
 # This repository
 
